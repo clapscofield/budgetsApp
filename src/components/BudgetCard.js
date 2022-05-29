@@ -11,6 +11,17 @@ export default function BudgetCard({
   onViewExpensesClick,
 }) {
 
+  function getProgressBarVariant(amount, maxAmount) {
+    const ratio = amount / maxAmount;
+    if (ratio < 0.5) {
+      return "primary";
+    }
+    if (ratio < 0.75) {
+      return "warning";
+    }
+    return "danger";
+  }
+
   const classNames = []
   if (amount > max) {
     classNames.push("bg-danger", "bg-opacity-10")
@@ -60,15 +71,4 @@ export default function BudgetCard({
       </Card.Body>
     </Card>
   )
-}
-
-function getProgressBarVariant(amount, maxAmount) {
-  const ratio = amount / maxAmount;
-  if (ratio < 0.5) {
-    return "primary";
-  }
-  if (ratio < 0.75) {
-    return "warning";
-  }
-  return "danger";
 }
