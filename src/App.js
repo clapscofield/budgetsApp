@@ -10,6 +10,7 @@ import { useState } from "react"
 import { UNCATEGORIZED_BUDGET_ID, useBudgets } from "./contexts/BudgetsContext"
 
 export const BUDGET_REDUCE_NUMBER = 0
+export const ADD_EXPENSES_MODAL_BOOL= false
 
 
 function App() {
@@ -73,12 +74,12 @@ function App() {
       </Container>
       <AddBudgetModal
         show={showAddBudgetModal}
-        handleClose={() => setShowAddBudgetModal(false)}
+        handleClose={() => setShowAddBudgetModal(ADD_EXPENSES_MODAL_BOOL)}
       />
       <AddExpenseModal
         show={showAddExpenseModal}
         defaultBudgetId={addExpenseModalBudgetId}
-        handleClose={() => setShowAddExpenseModal(false)}
+        handleClose={() => setShowAddExpenseModal(ADD_EXPENSES_MODAL_BOOL)}
       />
       <ViewExpensesModal
         budgetId={viewExpensesModalBudgetId}
