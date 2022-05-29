@@ -10,6 +10,7 @@ export default function BudgetCard({
   onAddExpenseClick,
   onViewExpensesClick,
 }) {
+
   const classNames = []
   if (amount > max) {
     classNames.push("bg-danger", "bg-opacity-10")
@@ -31,6 +32,7 @@ export default function BudgetCard({
             )}
           </div>
         </Card.Title>
+
         {max && (
           <ProgressBar
             className="rounded-pill"
@@ -40,6 +42,7 @@ export default function BudgetCard({
             now={amount}
           />
         )}
+
         {!hideButtons && (
           <Stack direction="horizontal" gap="2" className="mt-4">
             <Button
@@ -59,9 +62,13 @@ export default function BudgetCard({
   )
 }
 
-function getProgressBarVariant(amount, max) {
-  const ratio = amount / max
-  if (ratio < 0.5) return "primary"
-  if (ratio < 0.75) return "warning"
-  return "danger"
+function getProgressBarVariant(amount, maxAmount) {
+  const ratio = amount / maxAmount;
+  if (ratio < 0.5) {
+    return "primary";
+  }
+  if (ratio < 0.75) {
+    return "warning";
+  }
+  return "danger";
 }
