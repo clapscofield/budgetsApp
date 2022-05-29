@@ -12,8 +12,8 @@ export default function AddExpenseModal({
   const budgetIdRef = useRef()
   const { addExpense, budgets } = useBudgets()
 
-  function handleSubmit(e) {
-    e.preventDefault()
+  function handleSubmit(event) {
+    event.preventDefault()
     const newExpense = {
       description: descriptionRef.current.value,
       amount: parseFloat(amountRef.current.value),
