@@ -9,6 +9,9 @@ import TotalBudgetCard from "./components/TotalBudgetCard"
 import { useState } from "react"
 import { UNCATEGORIZED_BUDGET_ID, useBudgets } from "./contexts/BudgetsContext"
 
+export const BUDGET_REDUCE_NUMBER = 0
+
+
 function App() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false)
   const [showAddExpenseModal, setShowAddExpenseModal] = useState(false)
@@ -44,7 +47,7 @@ function App() {
           {budgets.map(budget => {
             const amount = getBudgetExpenses(budget.id).reduce(
               (total, expense) => total + expense.amount,
-              0
+              BUDGET_REDUCE_NUMBER
             )
             return (
               <BudgetCard
