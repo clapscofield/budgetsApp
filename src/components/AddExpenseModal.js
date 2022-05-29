@@ -14,11 +14,12 @@ export default function AddExpenseModal({
 
   function handleSubmit(e) {
     e.preventDefault()
-    addExpense({
+    const newExpense = {
       description: descriptionRef.current.value,
       amount: parseFloat(amountRef.current.value),
       budgetId: budgetIdRef.current.value,
-    })
+    }
+    addExpense(newExpense)
     handleClose()
   }
 
