@@ -12,27 +12,31 @@ export default function AddExpenseModal({
   const budgetIdRef = useRef()
   const { addExpense, budgets } = useBudgets()
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    addExpense({
+  function handleSubmit(event) {
+    event.preventDefault()
+    const newExpense = {
       description: descriptionRef.current.value,
       amount: parseFloat(amountRef.current.value),
       budgetId: budgetIdRef.current.value,
-    })
+    }
+    addExpense(newExpense)
     handleClose()
   }
 
   return (
     <Modal show={show} onHide={handleClose}>
       <Form onSubmit={handleSubmit}>
+
         <Modal.Header closeButton>
           <Modal.Title>New Expense</Modal.Title>
         </Modal.Header>
+
         <Modal.Body>
           <Form.Group className="mb-3" controlId="description">
             <Form.Label>Description</Form.Label>
             <Form.Control ref={descriptionRef} type="text" required />
           </Form.Group>
+
           <Form.Group className="mb-3" controlId="amount">
             <Form.Label>Amount</Form.Label>
             <Form.Control
@@ -43,6 +47,7 @@ export default function AddExpenseModal({
               step={0.01}
             />
           </Form.Group>
+          
           <Form.Group className="mb-3" controlId="budgetId">
             <Form.Label>Budget</Form.Label>
             <Form.Select defaultValue={defaultBudgetId} ref={budgetIdRef}>
