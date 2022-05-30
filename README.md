@@ -28,4 +28,3 @@ npm start
 O projeto utiliza das seguintes tecnologias para funcionamento:
 1. Reactjs - Uma biblioteca JavaScript para criar interfaces de usuário
 2. CSS - Linguagem de estilo, é usada para a personalização visual do site
-3. Jest - Poderoso Framework de Testes em JavaScript com um foco na simplicidade
