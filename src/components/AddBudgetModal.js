@@ -18,7 +18,7 @@ export default function AddBudgetModal({ show, handleClose }) {
   }
 
   return (
-    <Modal show={show} onHide={handleClose}>
+    <Modal show={show} onHide={handleClose} id="modalAdd">
       <Form onSubmit={handleSubmit}>
         <Modal.Header closeButton>
           <Modal.Title>New Budget</Modal.Title>
@@ -42,7 +42,7 @@ export default function AddBudgetModal({ show, handleClose }) {
           </Form.Group>
 
           <div className="d-flex justify-content-end">
-            <Button variant="primary" type="submit">
+            <Button variant="primary" type="submit" id="addButton">
               Add
             </Button>
           </div>
