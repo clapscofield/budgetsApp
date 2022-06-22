@@ -11,7 +11,7 @@ describe("add budget form", () => {
     beforeAll(function(done) {
         driver
         .navigate()
-        .to("http://localhost:3000/")
+        .to("/")
         .then(() => done());
     });
 
