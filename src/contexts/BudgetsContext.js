@@ -6,7 +6,7 @@ const BudgetsContext = React.createContext()
 
 export const UNCATEGORIZED_BUDGET_ID = "Uncategorized"
 
-export function useBudgets() {
+export default function useBudgets() {
   return useContext(BudgetsContext)
 }
 
