@@ -9,23 +9,13 @@ jest.mock("uuid", () => ({
 describe("BudgetsContext", () => {
     it("should create Budget Context", () => {
         const TestBudgetContext = () => {
-           const { 
-                budgets, 
-                expenses, 
-                getBudgetExpenses, 
-                addExpense, 
-                addBudget, 
-                deleteBudget, 
-                deleteExpense 
-            } = useBudgets(); 
-            expect(budgets).toBeDefined()
-            expect(expenses).toBeDefined()
-            expect(getBudgetExpenses).toBeDefined()
-            expect(addExpense).toBeDefined()
-            expect(addBudget).toBeDefined()
-            expect(deleteBudget).toBeDefined()
-            expect(deleteExpense).toBeDefined()
+           const context = useBudgets(); 
+            return (
+                <div>Test</div>
+            )
         }
+        const screen = render(<BudgetsProvider><TestBudgetContext /></BudgetsProvider>)
+        expect(screen).toBeDefined()
         
     });
     it("should add a budget", () => {
@@ -56,9 +46,10 @@ describe("BudgetsContext", () => {
             } = useBudgets(); 
 
             addBudget('test', 100);
-            budgets.map((budget) => {
-                deleteBudget(budget.id)
-            })
+
+            const budgetId = budgets[0].id
+
+            deleteBudget(budgetId);
         
             return <div>{budgets}</div>;
         }
@@ -78,7 +69,11 @@ describe("BudgetsContext", () => {
 
             addBudget('test', 100)
 
-            addExpense('testDescription', 10, expenses)
+            const budgetId = budgets.map((budget) => {
+                return budget.id
+            })
+
+            addExpense('testDescription', 10, budgetId)
 
             const expensesRender = expenses.map(expense => { return (
                 <div id={expense.id}><span>{expense.description} - {expense.amound}</span></div>
@@ -90,4 +85,10 @@ describe("BudgetsContext", () => {
         expect(screen.queryByText('testDescription')).toBeDefined();
         expect(screen.queryByText('10')).toBeDefined();
     })
+
+    it("should delete expense", () => {
+
+    })
+
+
 })
