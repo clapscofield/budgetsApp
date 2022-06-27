@@ -1,0 +1,25 @@
+import React from 'react';
+import { render } from "@testing-library/react"
+import AddBudgetModal from "./AddBudgetModal"
+import BudgetsProvider from '../contexts/BudgetsContext';
+import { act } from 'react-dom/test-utils';
+import ReactDOM from 'react-dom';
+import {useBudgets} from '../contexts/BudgetsContext';
+
+jest.mock('../contexts/BudgetsContext', () => ({
+    useBudget: jest.fn()
+}))
+
+describe("Testing Add Budget Modal", () => {
+    it("should render AddBudgetModal", () => {
+        const TestAddModal = () => { 
+            const { 
+                addBudget 
+            } = useBudgets(); 
+
+            return <div>{budgetsRender}</div>;
+        }
+        const screen = render(<BudgetsProvider><TestAddModal /></BudgetsProvider>)
+        expect(screen.getByText("New Budget")).toBeInTheDocument();
+    })
+})
