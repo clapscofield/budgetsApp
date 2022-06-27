@@ -18,6 +18,7 @@ describe("BudgetsContext", () => {
         expect(screen).toBeDefined()
         
     });
+
     it("should add a budget", () => {
         const TestAddBudget = () => { 
             const { 
@@ -87,9 +88,9 @@ describe("BudgetsContext", () => {
     //     expect(screen.queryByText('10')).toBeDefined();
     // })
 
-    it("should delete expense", () => {
+    // it("should delete expense", () => {
 
-    })
+    // })
 
 
 })
